@@ -1,0 +1,505 @@
+<!DOCTYPE html>
+<html lang="cs">
+<head>
+<meta charset="UTF-8">
+<title>Mgr. Katarína Šulová — profil advokátky</title>
+<style>
+  :root {
+    --navy: #10233f;
+    --navy-2: #17335a;
+    --teal: #14a37f;
+    --teal-light: #e4f7f0;
+    --teal-dark: #0a6b53;
+    --text: #1c2430;
+    --muted: #6b7280;
+    --border: #e4e7eb;
+    --bg: #f4f6f8;
+    --amber-light: #fdf3e0;
+    --amber-dark: #92620a;
+    --blue-light: #eaf1fb;
+    --blue-dark: #185fa5;
+  }
+  * { box-sizing: border-box; }
+  body {
+    margin: 0;
+    background: var(--bg);
+    font-family: -apple-system, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+    color: var(--text);
+  }
+  a { color: inherit; }
+
+  header.nav {
+    background: #ffffff; border-bottom: 1px solid var(--border);
+    display: flex; align-items: center; justify-content: space-between;
+    padding: 14px 40px;
+  }
+  .logo { font-size: 18px; font-weight: 700; color: var(--navy); display: flex; align-items: center; gap: 8px; text-decoration: none; }
+  .logo span.mark { color: var(--teal); }
+  .nav-links { display: flex; gap: 24px; align-items: center; font-size: 14px; }
+  .nav-links a { text-decoration: none; color: var(--text); }
+  .btn-outline {
+    border: 1px solid var(--navy); border-radius: 8px; padding: 8px 16px;
+    text-decoration: none; font-size: 13.5px; font-weight: 600; color: var(--navy);
+  }
+  .btn-solid {
+    background: var(--teal); border-radius: 8px; padding: 8px 16px; color: #fff;
+    text-decoration: none; font-size: 13.5px; font-weight: 600;
+  }
+
+  .page-wrap { display: flex; justify-content: center; padding: 32px 16px 60px; }
+  .card {
+    background: #ffffff;
+    max-width: 760px;
+    width: 100%;
+    border-radius: 16px;
+    overflow: hidden;
+    border: 1px solid var(--border);
+    box-shadow: 0 1px 3px rgba(16,35,63,0.08);
+  }
+  .header {
+    background: var(--navy);
+    color: #ffffff;
+    padding: 28px 32px;
+    display: flex;
+    gap: 18px;
+    align-items: center;
+    flex-wrap: wrap;
+  }
+  .avatar {
+    width: 64px;
+    height: 64px;
+    border-radius: 50%;
+    background: var(--teal);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 22px;
+    font-weight: 600;
+    color: #ffffff;
+    flex-shrink: 0;
+    border: 2px solid rgba(255,255,255,0.25);
+  }
+  .header h1 { margin: 0; font-size: 22px; font-weight: 600; }
+  .header .role { margin: 4px 0 0; font-size: 14px; color: #c7d3e0; }
+  .header .role a { color: #a8ecd8; text-decoration: none; border-bottom: 1px dotted rgba(168,236,216,0.5); }
+  .badge {
+    display: inline-flex; align-items: center; gap: 5px;
+    background: rgba(20,163,127,0.18); color: #a8ecd8;
+    font-size: 11px; padding: 3px 9px; border-radius: 20px; margin-top: 8px;
+  }
+  .body { padding: 24px 32px 28px; }
+  .contact-row { display: flex; gap: 10px; flex-wrap: wrap; margin-bottom: 18px; }
+  .contact-pill {
+    flex: 1; min-width: 150px; display: flex; align-items: center; gap: 8px;
+    border: 1px solid var(--border); border-radius: 10px; padding: 10px 12px;
+    font-size: 13px; text-decoration: none; color: var(--text);
+  }
+  .contact-pill:hover { border-color: var(--teal); background: var(--teal-light); }
+  .meta-tags { display: flex; gap: 8px; flex-wrap: wrap; margin-bottom: 22px; }
+  .meta-tag {
+    background: var(--bg); color: var(--muted); font-size: 12px;
+    padding: 4px 11px; border-radius: 20px; border: 1px solid var(--border);
+  }
+  .meta-tag.empty { color: #9aa1ab; font-style: italic; }
+  .section-label {
+    font-size: 11px; text-transform: uppercase; letter-spacing: 0.04em;
+    color: var(--muted); margin: 0 0 8px; font-weight: 600;
+  }
+  .section-head-row { display: flex; align-items: center; justify-content: space-between; margin-bottom: 8px; }
+  .tags { display: flex; gap: 8px; flex-wrap: wrap; margin-bottom: 22px; }
+  .tag {
+    background: var(--teal-light); color: var(--teal-dark); font-size: 12.5px;
+    font-weight: 500; padding: 5px 12px; border-radius: 20px;
+  }
+  .grid {
+    display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px;
+    border-top: 1px solid var(--border); border-bottom: 1px solid var(--border);
+    padding: 18px 0; margin-bottom: 22px;
+  }
+  .grid .item p:first-child { margin: 0; font-size: 11px; color: var(--muted); }
+  .grid .item p:last-child { margin: 3px 0 0; font-size: 14px; font-weight: 600; }
+  .about p { font-size: 14px; line-height: 1.65; color: #374151; margin: 0 0 22px; }
+  .info-line {
+    display: flex; align-items: flex-start; gap: 10px; font-size: 13px;
+    color: #374151; margin-bottom: 10px;
+  }
+  .info-line .dot {
+    width: 6px; height: 6px; border-radius: 50%; background: var(--teal);
+    margin-top: 6px; flex-shrink: 0;
+  }
+  .info-line.empty .dot { background: var(--border); }
+  .info-line.empty { color: var(--muted); }
+
+  .b2bg-grid {
+    display: grid; grid-template-columns: repeat(2, 1fr); gap: 10px; margin-bottom: 22px;
+  }
+  .b2bg-item {
+    border: 1px solid var(--border); border-radius: 10px; padding: 10px 12px;
+  }
+  .b2bg-item p:first-child { margin: 0; font-size: 11px; color: var(--muted); }
+  .b2bg-item p:last-child { margin: 3px 0 0; font-size: 13px; font-weight: 600; }
+  .b2bg-item.empty p:last-child { color: #9aa1ab; font-weight: 500; font-style: italic; }
+  .gov-note {
+    font-size: 11px; color: var(--muted); margin: -4px 0 22px; line-height: 1.5;
+  }
+
+  .toggle-row { display: flex; align-items: center; gap: 8px; }
+  .toggle-switch {
+    width: 34px; height: 20px; background: var(--teal); border-radius: 20px; position: relative; flex-shrink: 0;
+    cursor: pointer; transition: background 0.15s;
+  }
+  .toggle-switch::after {
+    content: ""; position: absolute; top: 2px; right: 2px; width: 16px; height: 16px;
+    background: #fff; border-radius: 50%; transition: right 0.15s, left 0.15s;
+  }
+  .toggle-switch.off { background: var(--border); }
+  .toggle-switch.off::after { right: auto; left: 2px; }
+  .toggle-label { font-size: 12px; color: var(--muted); }
+  .price-off-note {
+    background: var(--bg); color: var(--muted); font-size: 12.5px; font-style: italic;
+    padding: 12px 14px; border-radius: 10px; margin-bottom: 22px; border: 1px dashed var(--border);
+  }
+  .price-editor {
+    display: none; align-items: center; gap: 10px; margin-bottom: 10px; flex-wrap: wrap;
+  }
+  .price-editor input {
+    width: 110px; padding: 8px 10px; border: 1px solid var(--border); border-radius: 8px; font-size: 13px;
+  }
+  .price-unit-select {
+    padding: 8px 10px; border: 1px solid var(--border); border-radius: 8px; font-size: 13px;
+  }
+  .connect-row {
+    display: flex; align-items: center; justify-content: space-between; gap: 10px;
+    border: 1px solid var(--border); border-radius: 10px; padding: 10px 14px; margin-bottom: 8px;
+  }
+  .connect-row .c-left { display: flex; align-items: center; gap: 10px; }
+  .connect-row .c-name { font-size: 13px; font-weight: 600; }
+  .connect-row .c-note { font-size: 11.5px; color: var(--muted); margin-top: 2px; max-width: 420px; }
+  .connect-status {
+    font-size: 11px; padding: 3px 9px; border-radius: 8px; white-space: nowrap; flex-shrink: 0;
+  }
+  .connect-status.on { background: var(--teal-light); color: var(--teal-dark); }
+  .connect-status.off { background: var(--bg); color: var(--muted); border: 1px dashed var(--border); }
+  .connect-btn {
+    font-size: 11.5px; border: 1px solid var(--border-strong, #cfd4da); background: #fff; color: var(--navy);
+    padding: 5px 10px; border-radius: 7px; text-decoration: none; white-space: nowrap;
+  }
+  .career-note {
+    background: var(--teal-light); color: var(--teal-dark); font-size: 11.5px;
+    padding: 8px 10px; border-radius: 8px; margin-bottom: 16px; line-height: 1.5;
+  }
+  .career-block { margin-bottom: 16px; }
+  .career-block .ck-label { font-size: 12px; font-weight: 700; color: var(--navy); margin-bottom: 8px; }
+  .career-entry {
+    display: flex; gap: 12px; font-size: 13px; color: #374151; margin-bottom: 8px;
+  }
+  .career-entry .yr {
+    flex-shrink: 0; width: 84px; font-weight: 600; color: var(--navy); font-size: 12.5px;
+  }
+
+  .ratings { display: flex; flex-direction: column; gap: 8px; margin-bottom: 22px; }
+  .rating-row {
+    display: flex; align-items: center; justify-content: space-between; gap: 10px;
+    font-size: 13px; border: 1px solid var(--border); border-radius: 10px; padding: 10px 14px;
+  }
+  .rating-row .src { display: flex; align-items: center; gap: 8px; font-weight: 600; }
+  .rating-row .val { color: var(--muted); font-size: 12.5px; text-align: right; }
+  .stale-note {
+    background: var(--amber-light); color: var(--amber-dark); font-size: 11.5px;
+    padding: 2px 8px; border-radius: 6px; margin-left: 6px;
+  }
+  .map-wrap {
+    border: 1px solid var(--border); border-radius: 12px; overflow: hidden; margin-bottom: 22px;
+  }
+  .map-wrap iframe { width: 100%; height: 260px; border: 0; display: block; }
+  .map-footer {
+    display: flex; align-items: center; justify-content: space-between; gap: 10px;
+    padding: 12px 16px; background: var(--bg);
+  }
+  .map-footer .addr p:first-child { margin: 0; font-size: 13px; font-weight: 600; }
+  .map-footer .addr p:last-child { margin: 2px 0 0; font-size: 11.5px; color: var(--muted); }
+  .navigate-btn {
+    display: flex; align-items: center; gap: 6px; background: var(--navy); color: #fff;
+    font-size: 13px; font-weight: 500; padding: 9px 16px; border-radius: 8px;
+    text-decoration: none; white-space: nowrap;
+  }
+  .ref-wrap { position: relative; margin-bottom: 22px; border-radius: 10px; overflow: hidden; }
+  .ref-blur {
+    filter: blur(4px); opacity: 0.5; user-select: none; pointer-events: none;
+    background: var(--bg); border-radius: 10px; padding: 16px;
+  }
+  .ref-blur p:first-child { margin: 0 0 6px; font-size: 13.5px; }
+  .ref-blur p:last-child { margin: 0; font-size: 11.5px; color: var(--muted); }
+  .ref-lock {
+    position: absolute; inset: 0; display: flex; align-items: center; justify-content: center;
+    flex-direction: column; gap: 8px; text-align: center; padding: 16px;
+  }
+  .ref-lock .pill {
+    background: #ffffff; border: 1px solid var(--border); border-radius: 20px;
+    padding: 8px 16px; font-size: 12.5px; font-weight: 600; color: var(--navy);
+    display: flex; align-items: center; gap: 8px; box-shadow: 0 2px 6px rgba(16,35,63,0.08);
+  }
+  .ref-lock .sub { font-size: 11.5px; color: var(--muted); max-width: 340px; }
+  .cta-btn {
+    width: 100%; background: var(--teal); color: #fff; border: none; border-radius: 10px;
+    padding: 14px; font-size: 15px; font-weight: 600; cursor: pointer;
+  }
+  .footer-note {
+    font-size: 11px; color: var(--muted); border-top: 1px solid var(--border);
+    padding-top: 14px; line-height: 1.5;
+  }
+</style>
+</head>
+<body>
+
+  <header class="nav">
+    <a class="logo" href="Homepage_Srovnavac_advokatu.html"><span class="mark">⚖</span> Srovnávač advokátů</a>
+    <div class="nav-links">
+      <a href="Homepage_Srovnavac_advokatu.html">Vyhledat advokáta</a>
+      <a href="Profil_Kancelar_Janiskova_Lata.html">Profil kanceláře</a>
+      <a class="btn-outline" href="#">Správa profilu</a>
+      <a class="btn-solid" href="Poptavka_Zadani_Kauzy.html">Zadat poptávku</a>
+    </div>
+  </header>
+
+  <div class="page-wrap">
+  <div class="card">
+    <div class="header">
+      <div class="avatar">KŠ</div>
+      <div>
+        <h1>Mgr. Katarína Šulová</h1>
+        <p class="role">Advokátka · <a href="Profil_Kancelar_Janiskova_Lata.html">Janisková &amp; Lata, advokátní kancelář</a>, Brno</p>
+        <span class="badge">✓ ověřeno v rejstříku ČAK</span>
+      </div>
+    </div>
+    <div class="body">
+
+      <div class="contact-row">
+        <a class="contact-pill" href="https://www.janiskova-lata.cz" target="_blank">🔗 janiskova-lata.cz</a>
+        <a class="contact-pill" href="mailto:sulova@janiskova-lata.cz">✉ sulova@janiskova-lata.cz</a>
+        <a class="contact-pill" href="tel:+420776332348">☎ +420 776 332 348</a>
+        <a class="contact-pill" href="https://cz.linkedin.com/in/katar%C3%ADna-janiskov%C3%A1-897446147" target="_blank">in LinkedIn</a>
+        <a class="contact-pill" href="https://vyhledavac.cak.cz/Contact/Details/08a41614-5d23-e711-80d5-00155d040b0c" target="_blank">⚖ profil ČAK</a>
+      </div>
+
+      <div class="meta-tags">
+        <span class="meta-tag">malá kancelář · 2 advokáti + 1 koncipientka</span>
+        <span class="meta-tag">klientela: B2C i menší B2B</span>
+        <span class="meta-tag">ceník: individuální dle případu (na dotaz)</span>
+      </div>
+
+      <p class="section-label">Specializace</p>
+      <div class="tags">
+        <span class="tag">Rodinné právo · péče o nezletilé</span>
+        <span class="tag">Trestní právo · hospodářské trestné činy</span>
+        <span class="tag">Stavební a správní právo</span>
+        <span class="tag">Občanské právo</span>
+      </div>
+
+      <div class="grid">
+        <div class="item"><p>Vzdělání</p><p>PF UP Olomouc</p></div>
+        <div class="item"><p>Advokátkou od</p><p>2010 / 2014*</p></div>
+        <div class="item"><p>Vlastní praxe</p><p>od roku 2017</p></div>
+        <div class="item"><p>Jazyky</p><p>ČJ, angličtina</p></div>
+        <div class="item"><p>Evid. č. ČAK</p><p>13656</p></div>
+        <div class="item"><p>IČO</p><p>73628395</p></div>
+      </div>
+
+      <p class="section-label">O advokátce</p>
+      <div class="about">
+        <p>Po složení advokátní zkoušky (dle vlastního webu prosinec 2010; LinkedIn uvádí samostatnou praxi od května 2014 po předchozím působení u Mgr. Soni Bernardové) působila jako advokátka a manažerka civilního oddělení pro nadnárodního klienta v brněnské advokátní kanceláři. Od roku 2017 pokračuje ve vlastní praxi a v roce 2019 spojila síly s Mgr. Štěpánem Latou — společně založili advokátní kancelář Janisková &amp; Lata, dnes sídlící v Černých Polích u vily Tugendhat. Poskytuje pomoc s žalobami, stížnostmi a opravnými prostředky, zastupuje ve sporech občanskoprávních, obchodněprávních i trestněprávních, služby nabízí i v angličtině.</p>
+      </div>
+
+      <p class="section-label">Adresa a oprávnění</p>
+      <div class="info-line"><span class="dot"></span>Černopolní 228/37a, 613 00 Brno (Černá Pole) — aktuální sídlo dle ČAK a vlastního webu</div>
+      <div class="info-line"><span class="dot"></span>Samostatný advokát, stav: aktivní · způsob výkonu: § 5 zákona o advokacii</div>
+      <div class="info-line"><span class="dot"></span>Oprávnění k úschově klientských prostředků a k ověřování pravosti podpisu · přijímá ustanovení ex offo</div>
+      <div class="info-line" style="margin-bottom:22px;"><span class="dot"></span>Trvale spolupracuje s Mgr. Štěpánem Latou (advokát) · koncipientka: Mgr. Veronika Morisáková</div>
+
+      <p class="section-label">Parametry pro filtrování — B2B a B2G</p>
+      <div class="b2bg-grid">
+        <div class="b2bg-item"><p>Model spolupráce</p><p>hodinová sazba i pevné balíčky</p></div>
+        <div class="b2bg-item"><p>Velikost kanceláře</p><p>malá (2 advokáti + koncipientka)</p></div>
+        <div class="b2bg-item"><p>Pojištění odpovědnosti</p><p>ano, dle rámcové pojistky ČAK</p></div>
+        <div class="b2bg-item empty"><p>Mezinárodní spolupráce</p><p>neuvedeno</p></div>
+        <div class="b2bg-item empty"><p>Zkušenost s veřejnými zakázkami</p><p>nezjištěno v Registru smluv</p></div>
+        <div class="b2bg-item empty"><p>Typ zadavatele (B2G)</p><p>nerelevantní — bez zjištěných zakázek</p></div>
+        <div class="b2bg-item"><p>Pobočky</p><p>jedna adresa, Brno</p></div>
+        <div class="b2bg-item empty"><p>Sektor klienta</p><p>neuvedeno</p></div>
+      </div>
+      <p class="gov-note">Pole „zkušenost s veřejnými zakázkami" dopočítáváme automaticky ze smlouvy.gov.cz podle IČO 73628395. U této kanceláře jsme nenašli žádnou zveřejněnou smlouvu s veřejným zadavatelem — prázdné pole je neutrální informace, ne nedostatek.</p>
+
+      <p class="section-label">Funkce, členství a mimosoudní řešení sporů</p>
+      <div class="info-line empty"><span class="dot"></span>Neuvedeno — advokátka zatím nevyplnila členství v komisích, orgánech ČAK ani roli rozhodce/mediátora. Pole je nepovinné a nijak neovlivňuje viditelnost profilu.</div>
+
+      <p class="section-label">Ocenění a žebříčky</p>
+      <div class="info-line empty"><span class="dot"></span>Neuvedeno — bez zjištěného umístění v žebříčcích typu Chambers &amp; Partners, Legal 500, Právník roku nebo Právnická firma roku.</div>
+
+      <p class="section-label">Síť, skupina a doplňkové obory</p>
+      <div class="info-line empty" style="margin-bottom:22px;"><span class="dot"></span>Samostatná advokátní praxe, bez propojení na daňovou nebo účetní kancelář a bez členství v mezinárodní síti kanceláří.</div>
+
+      <div class="section-head-row">
+        <p class="section-label" style="margin:0;">Ceník</p>
+        <div class="toggle-row">
+          <span class="toggle-label" id="price-toggle-label">zobrazit cenové rozpětí</span>
+          <div class="toggle-switch off" id="price-toggle" onclick="toggleSection('price')" title="advokátka tuto sekci zatím nezapnula"></div>
+        </div>
+      </div>
+      <div id="price-content" style="display:none;">
+        <div class="price-editor" id="price-editor-fields">
+          <input type="text" placeholder="např. 2 000"> <span style="color:var(--muted);font-size:13px;">–</span>
+          <input type="text" placeholder="např. 3 500">
+          <select class="price-unit-select"><option>Kč / hod</option><option>Kč / úkon</option><option>€ / hod</option></select>
+        </div>
+      </div>
+      <div class="price-off-note" id="price-off-note">Advokátka se rozhodla cenové rozpětí nezveřejňovat — odměnu sjednává individuálně podle případu. Nejde o cenový srovnávač: rozpětí je jen orientační informace pro klienta, profily podle něj neseřazujeme od nejlevnějšího.</div>
+
+      <div class="section-head-row">
+        <p class="section-label" style="margin:0;">Kariéra v čase</p>
+        <div class="toggle-row">
+          <span class="toggle-label">zobrazit v profilu</span>
+          <div class="toggle-switch" id="career-toggle" onclick="toggleSection('career')" title="advokátka tuto sekci zapnula"></div>
+        </div>
+      </div>
+      <div id="career-content">
+        <div class="career-note">Tuto sekci si advokátka vyplňuje a zapíná sama. Pokud by ji nepovažovala za přínosnou, může ji z veřejného profilu kdykoli skrýt — nejde o povinnou položku.</div>
+
+        <div class="career-block">
+          <div class="ck-label">Vzdělání a kvalifikace</div>
+          <div class="career-entry"><span class="yr">2002–2007</span><span>Právnická fakulta Univerzity Palackého v Olomouci, obor právo a právní věda (Mgr.)</span></div>
+          <div class="career-entry"><span class="yr">2005</span><span>Legal studies, University of Wolverhampton (Velká Británie) — zahraniční studijní pobyt</span></div>
+        </div>
+
+        <div class="career-block">
+          <div class="ck-label">Působení v advokátních kancelářích a firmách</div>
+          <div class="career-entry"><span class="yr">2007–2011</span><span>advokátní koncipientka, Brno</span></div>
+          <div class="career-entry"><span class="yr">2011–2014</span><span>advokátka, Mgr. Soňa Bernardová, advokát</span></div>
+          <div class="career-entry"><span class="yr">2014–2019</span><span>samostatná advokátní praxe</span></div>
+          <div class="career-entry"><span class="yr">od 2019</span><span>Janisková &amp; Lata, advokátní kancelář</span></div>
+        </div>
+
+        <div class="career-block" style="margin-bottom:22px;">
+          <div class="ck-label">Kariérní růst</div>
+          <div class="career-entry"><span class="yr">pozice</span><span>koncipientka → samostatná advokátka → spoluzakladatelka a řídící partnerka kanceláře</span></div>
+        </div>
+      </div>
+
+      <p class="section-label">Hodnocení z veřejných profilů</p>
+      <div class="ratings">
+        <div class="rating-row">
+          <span class="src">🔵 Google</span>
+          <span class="val">bez recenzí<span class="stale-note">profil neaktuální — adresa Purkyňova, Medlánky</span></span>
+        </div>
+        <div class="rating-row">
+          <span class="src">🟠 Firmy.cz (Seznam)</span>
+          <span class="val">bez recenzí — „ohodnoťte firmu jako první“</span>
+        </div>
+        <div class="rating-row">
+          <span class="src">🔷 LinkedIn</span>
+          <span class="val">205 sledujících · 202 spojení</span>
+        </div>
+      </div>
+
+      <p class="section-label">Propojené účty a synchronizace dat</p>
+      <div class="connect-row">
+        <div class="c-left">
+          <span style="font-size:18px;">🔷</span>
+          <div>
+            <div class="c-name">LinkedIn</div>
+            <div class="c-note">Ověřeno přihlášením (jméno, foto, e-mail). Obousměrná synchronizace pracovní historie a vzdělání není technicky možná — LinkedIn od roku 2015 tato data přes veřejné API třetím stranám neposkytuje.</div>
+          </div>
+        </div>
+        <div style="display:flex;align-items:center;gap:8px;">
+          <span class="connect-status on">ověřeno</span>
+          <a class="connect-btn" href="#">obnovit ověření</a>
+        </div>
+      </div>
+      <div class="connect-row">
+        <div class="c-left">
+          <span style="font-size:18px;">🔵</span>
+          <div>
+            <div class="c-name">Google Business Profile</div>
+            <div class="c-note">Po ověření vlastnictví přes Google OAuth lze obousměrně sdílet otevírací dobu, telefon a popis. Recenze zůstávají jen na Googlu — nekopírujeme je, jen na ně odkazujeme.</div>
+          </div>
+        </div>
+        <div style="display:flex;align-items:center;gap:8px;">
+          <span class="connect-status off">nenapojeno</span>
+          <a class="connect-btn" href="#">ověřit a napojit</a>
+        </div>
+      </div>
+      <div class="connect-row">
+        <div class="c-left">
+          <span style="font-size:18px;">🟠</span>
+          <div>
+            <div class="c-name">Firmy.cz (Seznam)</div>
+            <div class="c-note">Seznam nabízí správu firemního záznamu jen přes komerční partnerství, ne otevřené API. Zatím proto jde jen o proklik, ne o synchronizaci dat.</div>
+          </div>
+        </div>
+        <div style="display:flex;align-items:center;gap:8px;">
+          <span class="connect-status off">jen proklik</span>
+        </div>
+      </div>
+
+      <p class="section-label">Kancelář na mapě</p>
+      <div class="map-wrap">
+        <iframe loading="lazy" src="https://maps.google.com/maps?q=%C4%8Cernopoln%C3%AD%20228/37a%2C%20613%2000%20Brno&output=embed"></iframe>
+        <div class="map-footer">
+          <div class="addr">
+            <p>Černopolní 228/37a, Černá Pole, 613 00 Brno</p>
+            <p>u vily Tugendhat</p>
+          </div>
+          <a class="navigate-btn" href="https://www.google.com/maps/dir/?api=1&destination=%C4%8Cernopoln%C3%AD+228%2F37a%2C+613+00+Brno" target="_blank">🧭 Navigovat</a>
+        </div>
+      </div>
+
+      <p class="section-label">Reference klientů</p>
+      <div class="ref-wrap">
+        <div class="ref-blur">
+          <p>„…profesionální přístup a rychlé vyřešení naší situace s péčí o dítě. Vždy vysvětlila kroky srozumitelně a…“</p>
+          <p>klient · rodinné právo · anonymizováno</p>
+        </div>
+        <div class="ref-lock">
+          <div class="pill">🔒 Reference se odemykají s placeným profilem advokátky</div>
+          <p class="sub">Klienti mohou po dokončení případu vyplnit anonymizovanou referenci. Zobrazení referencí ve srovnávači je součástí placeného profilu (viz ceník: advokát 5 €/měsíc).</p>
+        </div>
+      </div>
+
+      <button class="cta-btn" onclick="alert('V reálné platformě by se zde otevřel poptávkový formulář s popisem kauzy.')">Poptat advokátku ohledně mé kauzy</button>
+
+      <p class="section-label" style="margin-top:22px;">Podobné profily ve srovnávači</p>
+      <div style="display:flex;gap:8px;flex-wrap:wrap;margin-bottom:22px;">
+        <a href="Profil_Vilem_Podesva.html" style="font-size:12.5px;border:1px solid var(--border);border-radius:20px;padding:6px 12px;text-decoration:none;color:var(--navy);">JUDr. Vilém Podešva (ROWAN LEGAL)</a>
+        <a href="Profil_Lukas_Rezek.html" style="font-size:12.5px;border:1px solid var(--border);border-radius:20px;padding:6px 12px;text-decoration:none;color:var(--navy);">JUDr. Lukáš Rezek (Petráš Rezek)</a>
+        <a href="Homepage_Srovnavac_advokatu.html" style="font-size:12.5px;border:1px solid var(--border);border-radius:20px;padding:6px 12px;text-decoration:none;color:var(--navy);">Zpět na vyhledávání</a>
+      </div>
+
+      <div class="footer-note" style="margin-top:20px;">
+        Zdroje: veřejný rejstřík advokátů ČAK (vyhledavac.cak.cz, evid. č. 13656), web janiskova-lata.cz, Google Maps, Firmy.cz (Seznam), LinkedIn, smlouvy.gov.cz. * Rozdíl v datech mezi zdroji (2010 vs. 2014) ilustruje, proč se platforma musí spoléhat primárně na samoregistraci a ČAK, ne na sekundární zdroje. Stav k 22. 7. 2026, nad rámec uvedených zdrojů neověřováno. Sekce referencí je mockup — reálné reference by vyžadovaly souhlas klienta a advokátky.
+      </div>
+    </div>
+  </div>
+  </div>
+
+<script>
+function toggleSection(name) {
+  const content = document.getElementById(name + '-content');
+  const toggle = document.getElementById(name + '-toggle');
+  const isOff = toggle.classList.contains('off');
+  if (isOff) {
+    toggle.classList.remove('off');
+    content.style.display = 'block';
+    if (name === 'price') {
+      document.getElementById('price-off-note').style.display = 'none';
+      document.getElementById('price-editor-fields').style.display = 'flex';
+    }
+  } else {
+    toggle.classList.add('off');
+    content.style.display = 'none';
+    if (name === 'price') {
+      document.getElementById('price-off-note').style.display = 'block';
+    }
+  }
+}
+</script>
+</body>
+</html>

@@ -1,0 +1,243 @@
+<!DOCTYPE html>
+<html lang="cs">
+<head>
+<meta charset="UTF-8">
+<title>Zadat poptávku — Srovnávač advokátů</title>
+<style>
+  :root {
+    --navy: #10233f; --navy-2: #17335a; --teal: #14a37f; --teal-light: #e4f7f0; --teal-dark: #0a6b53;
+    --text: #1c2430; --muted: #6b7280; --border: #e4e7eb; --bg: #f4f6f8;
+    --amber-light: #fdf3e0; --amber-dark: #92620a; --blue-light: #eaf1fb; --blue-dark: #185fa5;
+  }
+  * { box-sizing: border-box; }
+  body { margin: 0; background: var(--bg); font-family: -apple-system, "Segoe UI", Roboto, Helvetica, Arial, sans-serif; color: var(--text); }
+  a { color: inherit; }
+
+  header.nav { background: #ffffff; border-bottom: 1px solid var(--border); display: flex; align-items: center; justify-content: space-between; padding: 14px 40px; }
+  .logo { font-size: 18px; font-weight: 700; color: var(--navy); display: flex; align-items: center; gap: 8px; text-decoration: none; }
+  .logo span.mark { color: var(--teal); }
+  .nav-links { display: flex; gap: 24px; align-items: center; font-size: 14px; }
+  .nav-links a { text-decoration: none; color: var(--text); }
+  .btn-outline { border: 1px solid var(--navy); border-radius: 8px; padding: 8px 16px; text-decoration: none; font-size: 13.5px; font-weight: 600; color: var(--navy); }
+  .btn-solid { background: var(--teal); border-radius: 8px; padding: 8px 16px; color: #fff; text-decoration: none; font-size: 13.5px; font-weight: 600; }
+
+  .hero { background: var(--navy); color: #fff; padding: 44px 40px 40px; text-align: center; }
+  .hero h1 { font-size: 28px; font-weight: 700; margin: 0 0 8px; }
+  .hero p { font-size: 14.5px; color: #c7d3e0; margin: 0 auto; max-width: 600px; }
+  .trust-row { display: flex; gap: 10px; justify-content: center; flex-wrap: wrap; margin-top: 20px; }
+  .trust-pill {
+    display: flex; align-items: center; gap: 6px; background: rgba(20,163,127,0.16); color: #a8ecd8;
+    font-size: 12px; padding: 6px 12px; border-radius: 20px;
+  }
+
+  .layout { max-width: 980px; margin: 32px auto 60px; padding: 0 20px; display: grid; grid-template-columns: minmax(0,1fr); gap: 24px; }
+  .card { background: #fff; border: 1px solid var(--border); border-radius: 14px; padding: 24px 28px; }
+  .card h2 { font-size: 16px; margin: 0 0 6px; }
+  .card .sub { font-size: 12.5px; color: var(--muted); margin: 0 0 18px; }
+
+  textarea.case-desc {
+    width: 100%; min-height: 100px; border: 1px solid var(--border); border-radius: 10px;
+    padding: 12px 14px; font-size: 14px; font-family: inherit; resize: vertical;
+  }
+  .form-row { display: grid; grid-template-columns: repeat(3, 1fr); gap: 12px; margin-top: 14px; }
+  .form-row select, .form-row input {
+    width: 100%; border: 1px solid var(--border); border-radius: 8px; padding: 9px 10px; font-size: 13px;
+  }
+  .upload-box {
+    border: 1px dashed var(--border); border-radius: 10px; padding: 16px; margin-top: 14px;
+    display: flex; align-items: center; gap: 12px; background: var(--bg);
+  }
+  .upload-box .u-icon { font-size: 22px; }
+  .upload-box .u-text { font-size: 12.5px; color: var(--muted); line-height: 1.5; }
+  .submit-btn {
+    margin-top: 18px; background: var(--teal); color: #fff; border: none; border-radius: 10px;
+    padding: 13px 20px; font-size: 14.5px; font-weight: 600; cursor: pointer;
+  }
+
+  .security-list { display: flex; flex-direction: column; gap: 10px; }
+  .security-item { display: flex; align-items: flex-start; gap: 10px; font-size: 13.5px; color: #374151; }
+  .security-item .ic { font-size: 16px; flex-shrink: 0; }
+  .security-note {
+    background: var(--blue-light); color: var(--blue-dark); font-size: 12px; padding: 10px 14px;
+    border-radius: 10px; margin-top: 14px; line-height: 1.55;
+  }
+
+  .match-card {
+    display: flex; gap: 14px; align-items: flex-start; border: 1px solid var(--border);
+    border-radius: 12px; padding: 14px 16px; margin-bottom: 10px;
+  }
+  .match-avatar { width: 44px; height: 44px; border-radius: 50%; background: var(--teal); color: #fff; display: flex; align-items: center; justify-content: center; font-weight: 700; font-size: 13px; flex-shrink: 0; }
+  .match-body { flex: 1; min-width: 0; }
+  .match-top { display: flex; justify-content: space-between; align-items: flex-start; gap: 10px; flex-wrap: wrap; }
+  .match-name { font-size: 14px; font-weight: 700; margin: 0; }
+  .match-firm { font-size: 12px; color: var(--muted); margin: 2px 0 0; }
+  .match-score { font-size: 11px; background: var(--teal-light); color: var(--teal-dark); padding: 3px 9px; border-radius: 10px; white-space: nowrap; }
+  .match-tags { display: flex; gap: 6px; flex-wrap: wrap; margin-top: 8px; }
+  .match-tag { font-size: 11px; background: var(--bg); border: 1px solid var(--border); padding: 2px 8px; border-radius: 12px; }
+  .match-cta { font-size: 12px; background: var(--navy); color: #fff; border: none; border-radius: 8px; padding: 8px 12px; cursor: pointer; white-space: nowrap; }
+
+  .flow-steps { display: flex; flex-direction: column; gap: 0; }
+  .flow-step { display: flex; gap: 14px; padding: 14px 0; border-bottom: 1px solid var(--border); }
+  .flow-step:last-child { border-bottom: none; }
+  .flow-num { width: 26px; height: 26px; border-radius: 50%; background: var(--navy); color: #fff; font-size: 12px; font-weight: 700; display: flex; align-items: center; justify-content: center; flex-shrink: 0; }
+  .flow-body h4 { margin: 0 0 4px; font-size: 13.5px; }
+  .flow-body p { margin: 0; font-size: 12.5px; color: var(--muted); line-height: 1.55; }
+  .flow-badge {
+    display: inline-flex; align-items: center; gap: 5px; background: var(--amber-light); color: var(--amber-dark);
+    font-size: 11px; padding: 2px 8px; border-radius: 8px; margin-left: 6px;
+  }
+
+  footer.trust-footer { border-top: 1px solid var(--border); background: #fff; padding: 22px 40px; text-align: center; font-size: 12px; color: var(--muted); }
+</style>
+</head>
+<body>
+
+  <header class="nav">
+    <a class="logo" href="Homepage_Srovnavac_advokatu.html"><span class="mark">⚖</span> Srovnávač advokátů</a>
+    <div class="nav-links">
+      <a href="Homepage_Srovnavac_advokatu.html">Vyhledat advokáta</a>
+      <a href="Profil_Katarina_Sulova.html">Ukázka profilu advokátky</a>
+      <a class="btn-outline" href="#">Jste advokát?</a>
+      <a class="btn-solid" href="Poptavka_Zadani_Kauzy.html">Zadat poptávku</a>
+    </div>
+  </header>
+
+  <section class="hero">
+    <h1>Popište svou kauzu — zbytek zvládne systém</h1>
+    <p>Data zůstávají šifrovaná a nesdílíme je s nikým, dokud si sami nevyberete a neodešlete poptávku konkrétnímu advokátovi.</p>
+    <div class="trust-row">
+      <span class="trust-pill">🔒 šifrováno při přenosu i uložení</span>
+      <span class="trust-pill">🚫 nesdíleno s třetími stranami</span>
+      <span class="trust-pill">🤖 nepoužito k trénování AI</span>
+      <span class="trust-pill">👁 přístup jen automatický, dokud nevyberete advokáta</span>
+    </div>
+  </section>
+
+  <div class="layout">
+
+    <div class="card">
+      <h2>1. Popište svou situaci</h2>
+      <p class="sub">Stačí pár vět — čím konkrétnější popis, tím přesnější výběr advokátů. Plné dokumenty (smlouvy, spisy) sem nedávejte, na to je až další krok.</p>
+      <textarea class="case-desc" id="caseDesc" placeholder="Např. „Řeším spor s pronajímatelem komerčních prostor v Praze, nájemní smlouva je nejasná ohledně výpovědní lhůty…“">Potřebujeme provést due diligence a smluvní dokumentaci k akvizici menší firmy, případně poradit i s daňovou optimalizací a generační výměnou v rodinné firmě.</textarea>
+      <div class="form-row">
+        <select><option>Typ kauzy</option><option>Občanská / osobní</option><option selected>Firemní</option><option>Veřejná instituce</option></select>
+        <input type="text" placeholder="Lokalita (např. Praha)">
+        <select><option>Rozpočet (nepovinné)</option><option>do 10 000 Kč</option><option>10–50 000 Kč</option><option>nad 50 000 Kč</option></select>
+      </div>
+      <div class="upload-box">
+        <span class="u-icon">📎</span>
+        <span class="u-text">Nahrání dokumentů zatím vypnuto. Jakmile advokát poptávku přijme, dokumenty nahrajete přímo do jeho zabezpečeného systému pro práci se spisem (např. Konfido, nebo vlastní řešení) — nikdy je neukládáme u nás.</span>
+      </div>
+      <button class="submit-btn" onclick="runMatch(); document.getElementById('results').scrollIntoView({behavior:'smooth'})">Najít relevantní advokáty</button>
+    </div>
+
+    <div class="card">
+      <h2>Co se stane s vašimi daty</h2>
+      <p class="sub">Stejný standard zabezpečení, jaký advokáti sami používají pro práci se spisy — akorát na straně příjmu poptávky.</p>
+      <div class="security-list">
+        <div class="security-item"><span class="ic">🔐</span><span>Popis kauzy je šifrovaný při přenosu i v úložišti — obdobně jako u bankovních dat.</span></div>
+        <div class="security-item"><span class="ic">🤖</span><span>Výběr advokátů dělá automatický systém podle odvozených témat (např. „nájemní spor", „Praha") — ne člověk, který by si váš text četl.</span></div>
+        <div class="security-item"><span class="ic">📤</span><span>Celý text uvidí až konkrétní advokát, kterého sami vyberete a kterému poptávku odešlete.</span></div>
+        <div class="security-item"><span class="ic">🗑</span><span>Pokud poptávku nikomu neodešlete, popis kauzy po 30 dnech automaticky smažeme.</span></div>
+      </div>
+      <div class="security-note">Právně jde o smluvní a GDPR ochranu dat z naší strany — ne o advokátní mlčenlivost, tu má ze zákona jen advokát. Jakmile ale advokát poptávku přijme a začne vás zastupovat, vztahuje se na něj mlčenlivost podle zákona o advokacii. Návrh je postavený tak, aby se citlivost zacházení s daty na obou stranách hranice cítila stejně silně.</div>
+    </div>
+
+    <div class="card" id="results">
+      <h2>2. Vybrané advokáty a kanceláře</h2>
+      <p class="sub" id="matchSub">Odpovídá popisu vaší kauzy.</p>
+
+      <div id="matchList"></div>
+
+      <p style="font-size:11.5px;color:var(--muted);margin:10px 0 0;">Shoda se počítá jednoduchou JS logikou z odvozených klíčových slov vašeho popisu, ne z jeho plného znění — advokáti do odeslání poptávky vidí jen tato témata, ne váš text. (V reálné platformě by odvozování témat mohla dělat AI — v tomto prototypu jde o transparentní klíčová slova, aby bylo jasné, jak výběr vzniká.)</p>
+    </div>
+
+    <div class="card">
+      <h2>3. Co se stane po odeslání poptávky</h2>
+      <p class="sub">Rozsah zpracování je záměrně menší než u specializovaných nástrojů pro práci se spisem — hlubší analýza se řeší jinde.</p>
+      <div class="flow-steps">
+        <div class="flow-step">
+          <div class="flow-num">1</div>
+          <div class="flow-body"><h4>Advokát dostane jen shrnutí</h4><p>Ne celý text ani přílohy — jen odvozená témata a základní kontext, dokud poptávku nepřijme.</p></div>
+        </div>
+        <div class="flow-step">
+          <div class="flow-num">2</div>
+          <div class="flow-body"><h4>Přijetím vzniká advokátní mlčenlivost <span class="flow-badge">právní hranice</span></h4><p>Od tohoto okamžiku je advokát vázán mlčenlivostí ze zákona — silnější ochranou, než jakou může slíbit platforma sama.</p></div>
+        </div>
+        <div class="flow-step">
+          <div class="flow-num">3</div>
+          <div class="flow-body"><h4>Hlubší práce se spisem mimo naši databázi</h4><p>Pro plné dokumenty a AI analýzu spisu (chronologie, citace, rozpory ve výpovědích) advokát pokračuje v partnerském systému — např. Konfido, nebo vlastním řešení. Nikdy to neprochází přes nás.</p></div>
+        </div>
+        <div class="flow-step">
+          <div class="flow-num">4</div>
+          <div class="flow-body"><h4>Systém navrhne nabídku</h4><p>Z vašeho popisu kauzy, profilu advokáta (specializace, tým, ceník) a grafické šablony poskládáme návrh cenové nabídky, kterou si advokát před odesláním upraví.</p></div>
+        </div>
+        <div class="flow-step">
+          <div class="flow-num">5</div>
+          <div class="flow-body"><h4>Nabídku dostanete zpět přes platformu</h4><p>Rozhodnutí, zda nabídku přijmout, je celou dobu na vás.</p></div>
+        </div>
+      </div>
+    </div>
+
+  </div>
+
+  <footer class="trust-footer">
+    Zabezpečení popisu kauzy je smluvní a technický standard srovnávače (šifrování, minimalizace dat, automatické mazání) — advokátní mlčenlivost ze zákona se váže na advokáta až po přijetí poptávky. Hlubší práce se spisem je vždy mimo databázi srovnávače, u partnerského systému pro bezpečnou AI analýzu spisů.
+  </footer>
+
+<script src="data.js"></script>
+<script>
+  function matchFirmLink(entry) {
+    if (!entry.firmName) return "";
+    const firm = SITE_DATA.firms.find(f => f.id === entry.firmId);
+    if (firm && firm.page) return ' · <a href="' + firm.page + '" style="text-decoration:none;color:inherit;">' + entry.firmName + '</a>';
+    return entry.firmName ? ' · ' + entry.firmName : '';
+  }
+
+  function renderMatchCard(m) {
+    const e = m.entry;
+    const nameHtml = e.page ? '<a href="' + e.page + '" style="text-decoration:none;color:inherit;">' + e.name + '</a>' : e.name;
+    const tagsHtml = (m.matched && m.matched.length ? m.matched.slice(0, 3) : e.tags.slice(0, 2))
+      .map(t => '<span class="match-tag">' + t + '</span>').join('');
+    const demoNote = e.real ? '' : ' <span style="font-size:10px;color:#3c3489;">(fiktivní ukázka)</span>';
+    return '' +
+      '<div class="match-card">' +
+        '<div class="match-avatar" style="background:' + e.avatarColor + ';">' + e.avatarInitials + '</div>' +
+        '<div class="match-body">' +
+          '<div class="match-top">' +
+            '<div>' +
+              '<p class="match-name">' + nameHtml + demoNote + '</p>' +
+              '<p class="match-firm">' + e.city + matchFirmLink(e) + '</p>' +
+            '</div>' +
+            '<span class="match-score">shoda ' + m.percent + ' %</span>' +
+          '</div>' +
+          '<div class="match-tags">' + tagsHtml + '</div>' +
+        '</div>' +
+        '<button class="match-cta" onclick="sendInquiry(this)">Poptat</button>' +
+      '</div>';
+  }
+
+  function sendInquiry(btn) {
+    const original = btn.textContent;
+    btn.textContent = '✓ Odesláno (demo)';
+    btn.disabled = true;
+    btn.style.opacity = '0.75';
+    setTimeout(() => {
+      btn.textContent = original;
+      btn.disabled = false;
+      btn.style.opacity = '1';
+    }, 2400);
+  }
+
+  function runMatch() {
+    const text = document.getElementById('caseDesc').value;
+    const matches = matchLawyers(text, 2);
+    document.getElementById('matchList').innerHTML = matches.map(renderMatchCard).join('');
+    document.getElementById('matchSub').textContent = 'Odpovídá popisu: „' + text.slice(0, 80) + (text.length > 80 ? '…' : '') + '"';
+  }
+
+  runMatch();
+</script>
+
+</body>
+</html>

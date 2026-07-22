@@ -1,0 +1,264 @@
+<!DOCTYPE html>
+<html lang="cs">
+<head>
+<meta charset="UTF-8">
+<title>JUDr. Lukáš Rezek, LL.M. — profil advokáta</title>
+<style>
+  :root {
+    --navy: #10233f; --navy-2: #17335a; --teal: #14a37f; --teal-light: #e4f7f0; --teal-dark: #0a6b53;
+    --text: #1c2430; --muted: #6b7280; --border: #e4e7eb; --bg: #f4f6f8;
+    --amber-light: #fdf3e0; --amber-dark: #92620a; --blue-light: #eaf1fb; --blue-dark: #185fa5;
+  }
+  * { box-sizing: border-box; }
+  body { margin: 0; background: var(--bg); font-family: -apple-system, "Segoe UI", Roboto, Helvetica, Arial, sans-serif; color: var(--text); }
+  a { color: inherit; }
+  header.nav { background: #ffffff; border-bottom: 1px solid var(--border); display: flex; align-items: center; justify-content: space-between; padding: 14px 40px; }
+  .logo { font-size: 18px; font-weight: 700; color: var(--navy); display: flex; align-items: center; gap: 8px; text-decoration: none; }
+  .logo span.mark { color: var(--teal); }
+  .nav-links { display: flex; gap: 24px; align-items: center; font-size: 14px; }
+  .nav-links a { text-decoration: none; color: var(--text); }
+  .btn-outline { border: 1px solid var(--navy); border-radius: 8px; padding: 8px 16px; text-decoration: none; font-size: 13.5px; font-weight: 600; color: var(--navy); }
+  .btn-solid { background: var(--teal); border-radius: 8px; padding: 8px 16px; color: #fff; text-decoration: none; font-size: 13.5px; font-weight: 600; }
+  .page-wrap { display: flex; justify-content: center; padding: 32px 16px 60px; }
+  .card { background: #ffffff; max-width: 760px; width: 100%; border-radius: 16px; overflow: hidden; border: 1px solid var(--border); box-shadow: 0 1px 3px rgba(16,35,63,0.08); }
+  .header { background: var(--navy); color: #ffffff; padding: 28px 32px; display: flex; gap: 18px; align-items: center; flex-wrap: wrap; }
+  .avatar { width: 64px; height: 64px; border-radius: 50%; background: var(--amber-dark); display: flex; align-items: center; justify-content: center; font-size: 22px; font-weight: 600; color: #ffffff; flex-shrink: 0; border: 2px solid rgba(255,255,255,0.25); }
+  .header h1 { margin: 0; font-size: 22px; font-weight: 600; }
+  .header .role { margin: 4px 0 0; font-size: 14px; color: #c7d3e0; }
+  .header .role a { color: #a8ecd8; text-decoration: none; border-bottom: 1px dotted rgba(168,236,216,0.5); }
+  .badge { display: inline-flex; align-items: center; gap: 5px; background: rgba(20,163,127,0.18); color: #a8ecd8; font-size: 11px; padding: 3px 9px; border-radius: 20px; margin-top: 8px; }
+  .badge.info { background: rgba(24,95,165,0.22); color: #cfe3fa; }
+  .body { padding: 24px 32px 28px; }
+  .contact-row { display: flex; gap: 10px; flex-wrap: wrap; margin-bottom: 18px; }
+  .contact-pill { flex: 1; min-width: 150px; display: flex; align-items: center; gap: 8px; border: 1px solid var(--border); border-radius: 10px; padding: 10px 12px; font-size: 13px; text-decoration: none; color: var(--text); }
+  .contact-pill:hover { border-color: var(--teal); background: var(--teal-light); }
+  .meta-tags { display: flex; gap: 8px; flex-wrap: wrap; margin-bottom: 22px; }
+  .meta-tag { background: var(--bg); color: var(--muted); font-size: 12px; padding: 4px 11px; border-radius: 20px; border: 1px solid var(--border); }
+  .meta-tag.empty { color: #9aa1ab; font-style: italic; }
+  .section-label { font-size: 11px; text-transform: uppercase; letter-spacing: 0.04em; color: var(--muted); margin: 0 0 8px; font-weight: 600; }
+  .section-head-row { display: flex; align-items: center; justify-content: space-between; margin-bottom: 8px; }
+  .tags { display: flex; gap: 8px; flex-wrap: wrap; margin-bottom: 22px; }
+  .tag { background: var(--teal-light); color: var(--teal-dark); font-size: 12.5px; font-weight: 500; padding: 5px 12px; border-radius: 20px; }
+  .grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; border-top: 1px solid var(--border); border-bottom: 1px solid var(--border); padding: 18px 0; margin-bottom: 22px; }
+  .grid .item p:first-child { margin: 0; font-size: 11px; color: var(--muted); }
+  .grid .item p:last-child { margin: 3px 0 0; font-size: 14px; font-weight: 600; }
+  .grid .item.empty p:last-child { color: #9aa1ab; font-weight: 500; font-style: italic; font-size: 12.5px; }
+  .about p { font-size: 14px; line-height: 1.65; color: #374151; margin: 0 0 22px; }
+  .info-line { display: flex; align-items: flex-start; gap: 10px; font-size: 13px; color: #374151; margin-bottom: 10px; }
+  .info-line .dot { width: 6px; height: 6px; border-radius: 50%; background: var(--teal); margin-top: 6px; flex-shrink: 0; }
+  .info-line.empty .dot { background: var(--border); }
+  .info-line.empty { color: var(--muted); }
+  .b2bg-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 10px; margin-bottom: 22px; }
+  .b2bg-item { border: 1px solid var(--border); border-radius: 10px; padding: 10px 12px; }
+  .b2bg-item p:first-child { margin: 0; font-size: 11px; color: var(--muted); }
+  .b2bg-item p:last-child { margin: 3px 0 0; font-size: 13px; font-weight: 600; }
+  .b2bg-item.empty p:last-child { color: #9aa1ab; font-weight: 500; font-style: italic; }
+  .gov-note { font-size: 11px; color: var(--muted); margin: -4px 0 22px; line-height: 1.5; }
+  .toggle-row { display: flex; align-items: center; gap: 8px; }
+  .toggle-switch { width: 34px; height: 20px; background: var(--teal); border-radius: 20px; position: relative; flex-shrink: 0; cursor: pointer; transition: background 0.15s; }
+  .toggle-switch::after { content: ""; position: absolute; top: 2px; right: 2px; width: 16px; height: 16px; background: #fff; border-radius: 50%; transition: right 0.15s, left 0.15s; }
+  .toggle-switch.off { background: var(--border); }
+  .toggle-switch.off::after { right: auto; left: 2px; }
+  .toggle-label { font-size: 12px; color: var(--muted); }
+  .price-off-note { background: var(--bg); color: var(--muted); font-size: 12.5px; font-style: italic; padding: 12px 14px; border-radius: 10px; margin-bottom: 22px; border: 1px dashed var(--border); }
+  .price-editor { display: none; align-items: center; gap: 10px; margin-bottom: 10px; flex-wrap: wrap; }
+  .price-editor input { width: 110px; padding: 8px 10px; border: 1px solid var(--border); border-radius: 8px; font-size: 13px; }
+  .price-unit-select { padding: 8px 10px; border: 1px solid var(--border); border-radius: 8px; font-size: 13px; }
+  .connect-row { display: flex; align-items: center; justify-content: space-between; gap: 10px; border: 1px solid var(--border); border-radius: 10px; padding: 10px 14px; margin-bottom: 8px; }
+  .connect-row .c-left { display: flex; align-items: center; gap: 10px; }
+  .connect-row .c-name { font-size: 13px; font-weight: 600; }
+  .connect-row .c-note { font-size: 11.5px; color: var(--muted); margin-top: 2px; max-width: 420px; }
+  .connect-status { font-size: 11px; padding: 3px 9px; border-radius: 8px; white-space: nowrap; flex-shrink: 0; }
+  .connect-status.on { background: var(--teal-light); color: var(--teal-dark); }
+  .connect-status.off { background: var(--bg); color: var(--muted); border: 1px dashed var(--border); }
+  .connect-btn { font-size: 11.5px; border: 1px solid #cfd4da; background: #fff; color: var(--navy); padding: 5px 10px; border-radius: 7px; text-decoration: none; white-space: nowrap; }
+  .career-note { background: var(--teal-light); color: var(--teal-dark); font-size: 11.5px; padding: 8px 10px; border-radius: 8px; margin-bottom: 16px; line-height: 1.5; }
+  .ratings { display: flex; flex-direction: column; gap: 8px; margin-bottom: 22px; }
+  .rating-row { display: flex; align-items: center; justify-content: space-between; gap: 10px; font-size: 13px; border: 1px solid var(--border); border-radius: 10px; padding: 10px 14px; }
+  .rating-row .src { display: flex; align-items: center; gap: 8px; font-weight: 600; }
+  .rating-row .val { color: var(--muted); font-size: 12.5px; text-align: right; }
+  .map-wrap { border: 1px solid var(--border); border-radius: 12px; overflow: hidden; margin-bottom: 22px; }
+  .map-wrap iframe { width: 100%; height: 260px; border: 0; display: block; }
+  .map-footer { display: flex; align-items: center; justify-content: space-between; gap: 10px; padding: 12px 16px; background: var(--bg); }
+  .map-footer .addr p:first-child { margin: 0; font-size: 13px; font-weight: 600; }
+  .map-footer .addr p:last-child { margin: 2px 0 0; font-size: 11.5px; color: var(--muted); }
+  .navigate-btn { display: flex; align-items: center; gap: 6px; background: var(--navy); color: #fff; font-size: 13px; font-weight: 500; padding: 9px 16px; border-radius: 8px; text-decoration: none; white-space: nowrap; }
+  .cta-btn { width: 100%; background: var(--teal); color: #fff; border: none; border-radius: 10px; padding: 14px; font-size: 15px; font-weight: 600; cursor: pointer; }
+  .footer-note { font-size: 11px; color: var(--muted); border-top: 1px solid var(--border); padding-top: 14px; line-height: 1.5; }
+  .related-row { display: flex; gap: 8px; flex-wrap: wrap; margin-bottom: 22px; }
+  .related-row a { font-size: 12.5px; border: 1px solid var(--border); border-radius: 20px; padding: 6px 12px; text-decoration: none; color: var(--navy); }
+  .related-row a:hover { border-color: var(--teal); background: var(--teal-light); }
+</style>
+</head>
+<body>
+
+  <header class="nav">
+    <a class="logo" href="Homepage_Srovnavac_advokatu.html"><span class="mark">⚖</span> Srovnávač advokátů</a>
+    <div class="nav-links">
+      <a href="Homepage_Srovnavac_advokatu.html">Vyhledat advokáta</a>
+      <a href="Profil_Petras_Rezek.html">Profil kanceláře</a>
+      <a class="btn-outline" href="#">Správa profilu</a>
+      <a class="btn-solid" href="Poptavka_Zadani_Kauzy.html">Zadat poptávku</a>
+    </div>
+  </header>
+
+  <div class="page-wrap">
+  <div class="card">
+    <div class="header">
+      <div class="avatar">LR</div>
+      <div>
+        <h1>JUDr. Lukáš Rezek, LL.M.</h1>
+        <p class="role">Advokát · Partner · <a href="Profil_Petras_Rezek.html">Advokátní kancelář Petráš Rezek s.r.o.</a>, Zlín</p>
+        <span class="badge info">ⓘ automaticky vytvořený stub profil — nenárokováno, osobní ověření u ČAK neprovedeno</span>
+      </div>
+    </div>
+    <div class="body">
+
+      <div class="contact-row">
+        <a class="contact-pill" href="https://www.petrasrezek.cz" target="_blank">🔗 petrasrezek.cz</a>
+        <a class="contact-pill" href="mailto:backoffice@petrasrezek.cz">✉ backoffice@petrasrezek.cz (kancelář)</a>
+        <a class="contact-pill" href="tel:+420601001555">☎ +420 601 001 555 (kancelář)</a>
+        <span class="contact-pill" style="opacity:0.55;font-style:italic;">in LinkedIn — nedohledáno v tomto kole</span>
+      </div>
+
+      <div class="meta-tags">
+        <span class="meta-tag">velká kancelář · 50+ advokátů a kolegů</span>
+        <span class="meta-tag">klientela: B2B</span>
+        <span class="meta-tag empty">ceník: neuvedeno</span>
+      </div>
+
+      <p class="section-label">Specializace</p>
+      <div class="tags">
+        <span class="tag">Obchodní právo (obor kanceláře)</span>
+        <span class="tag">Transakce a M&amp;A (obor kanceláře)</span>
+      </div>
+      <p class="gov-note" style="margin-top:-14px;">Web nerozlišuje specializace jednotlivých advokátů — uvádíme proto obory, které deklaruje kancelář jako celek.</p>
+
+      <div class="grid">
+        <div class="item"><p>Kancelář</p><p>Petráš Rezek</p></div>
+        <div class="item"><p>Pozice</p><p>Partner / advokát</p></div>
+        <div class="item"><p>Sídlo pobočky</p><p>Zlín</p></div>
+        <div class="item empty"><p>Vzdělání</p><p>neuvedeno na webu</p></div>
+        <div class="item empty"><p>Evid. č. ČAK</p><p>nezjištěno v tomto kole</p></div>
+        <div class="item empty"><p>Jazyky</p><p>neuvedeno na webu</p></div>
+      </div>
+
+      <p class="section-label">O advokátovi</p>
+      <div class="about">
+        <p>Veřejná týmová stránka kanceláře uvádí u JUDr. Lukáše Rezka, LL.M. pouze titul „Partner | Advokát" — bez dalšího osobního životopisu, specializace nebo fotografie. Profil je automaticky vytvořený stub podle veřejného webu kanceláře; po nárokování by ho mohl pan Rezek sám doplnit o vzdělání, kariéru, specializace i ceník — obdobně jako v případě menších kanceláří typu Janisková &amp; Lata.</p>
+      </div>
+
+      <p class="section-label">Adresa a oprávnění</p>
+      <div class="info-line"><span class="dot"></span>2. května 7134, 760 01 Zlín — korespondenční adresa kanceláře dle webu</div>
+      <div class="info-line empty" style="margin-bottom:22px;"><span class="dot"></span>Součástí větší advokátní kanceláře (s.r.o.) — osobní evidenční číslo ČAK jsme v tomto kole neověřovali.</div>
+
+      <p class="section-label">Parametry pro filtrování — B2B a B2G</p>
+      <div class="b2bg-grid">
+        <div class="b2bg-item empty"><p>Model spolupráce</p><p>neuvedeno na webu</p></div>
+        <div class="b2bg-item"><p>Velikost kanceláře</p><p>velká (50+ advokátů a kolegů)</p></div>
+        <div class="b2bg-item empty"><p>Pojištění odpovědnosti</p><p>neuvedeno na webu</p></div>
+        <div class="b2bg-item empty"><p>Mezinárodní spolupráce</p><p>neuvedeno na veřejném webu</p></div>
+        <div class="b2bg-item"><p>Obor „veřejné zakázky" v nabídce</p><p>ano — kancelář o něm publikuje odborné články</p></div>
+        <div class="b2bg-item empty"><p>Zkušenost dle Registru smluv</p><p>nedopočítáno v tomto kole</p></div>
+        <div class="b2bg-item"><p>Pobočky</p><p>2 — Zlín, Praha</p></div>
+        <div class="b2bg-item empty"><p>Sektor klienta</p><p>neuvedeno</p></div>
+      </div>
+      <p class="gov-note">Registr smluv jsme pro tuto kancelář v tomto kole nedopočítávali. Zaměření na veřejné zakázky je ale reálné a veřejně publikované — kancelář o tématu píše ve vlastní sekci Aktuality.</p>
+
+      <p class="section-label">Funkce, členství a mimosoudní řešení sporů</p>
+      <div class="info-line empty"><span class="dot"></span>Neuvedeno na veřejném webu kanceláře — v tomto kole jsme čerpali jen z petrasrezek.cz, ne z dalších profesních materiálů jednotlivých advokátů.</div>
+
+      <p class="section-label">Ocenění a žebříčky</p>
+      <div class="info-line empty"><span class="dot"></span>Neuvedeno u tohoto konkrétního advokáta. Kancelář jako celek na homepage deklaruje „3 významná právní ocenění" bez upřesnění — viz profil kanceláře.</div>
+
+      <p class="section-label">Síť, skupina a doplňkové obory</p>
+      <div class="info-line" style="margin-bottom:22px;"><span class="dot"></span>Kancelář jako celek je reálným příkladem multioborové skupiny (právo + daně + účetnictví) — viz profil kanceláře Petráš Rezek.</div>
+
+      <div class="section-head-row">
+        <p class="section-label" style="margin:0;">Ceník</p>
+        <div class="toggle-row">
+          <span class="toggle-label">zobrazit cenové rozpětí</span>
+          <div class="toggle-switch off" id="price-toggle" onclick="toggleSection('price')" title="profil tuto sekci zatím nezapnul"></div>
+        </div>
+      </div>
+      <div id="price-content" style="display:none;">
+        <div class="price-editor" id="price-editor-fields">
+          <input type="text" placeholder="např. 3 000"> <span style="color:var(--muted);font-size:13px;">–</span>
+          <input type="text" placeholder="např. 6 000">
+          <select class="price-unit-select"><option>Kč / hod</option><option>Kč / úkon</option><option>€ / hod</option></select>
+        </div>
+      </div>
+      <div class="price-off-note" id="price-off-note">Cenové rozpětí nebylo u tohoto profilu zveřejněno. Nejde o cenový srovnávač — jde jen o nepovinný, orientační údaj.</div>
+
+      <div class="section-head-row">
+        <p class="section-label" style="margin:0;">Kariéra v čase</p>
+        <div class="toggle-row">
+          <span class="toggle-label">zobrazit v profilu</span>
+          <div class="toggle-switch off" id="career-toggle" onclick="toggleSection('career')" title="profil tuto sekci zatím nezapnul"></div>
+        </div>
+      </div>
+      <div id="career-content" style="display:none;">
+        <div class="career-note" style="margin-bottom:22px;">Kariéra v čase nebyla u tohoto profilu vyplněna — jde o automaticky vytvořený stub, veřejný web žádnou kariérní historii jednotlivých advokátů neuvádí. Po nárokování by ji mohl pan Rezek doplnit sám.</div>
+      </div>
+
+      <p class="section-label">Hodnocení z veřejných profilů</p>
+      <div class="ratings">
+        <div class="rating-row"><span class="src">🔵 Google</span><span class="val">nekontrolováno v tomto kole</span></div>
+        <div class="rating-row"><span class="src">🟠 Firmy.cz (Seznam)</span><span class="val">nekontrolováno v tomto kole</span></div>
+        <div class="rating-row"><span class="src">🔷 LinkedIn</span><span class="val">nekontrolováno v tomto kole</span></div>
+      </div>
+
+      <p class="section-label">Propojené účty a synchronizace dat</p>
+      <div class="connect-row">
+        <div class="c-left"><span style="font-size:18px;">🔷</span><div><div class="c-name">LinkedIn</div><div class="c-note">Nenárokováno — po ověření by šlo jen o přihlášení, ne o obousměrnou synchronizaci historie.</div></div></div>
+        <div style="display:flex;align-items:center;gap:8px;"><span class="connect-status off">nenapojeno</span><a class="connect-btn" href="#">ověřit a napojit</a></div>
+      </div>
+
+      <p class="section-label">Kancelář na mapě</p>
+      <div class="map-wrap">
+        <iframe loading="lazy" src="https://maps.google.com/maps?q=2.%20kv%C4%9Btna%207134%2C%20760%2001%20Zl%C3%ADn&output=embed"></iframe>
+        <div class="map-footer">
+          <div class="addr"><p>2. května 7134, 760 01 Zlín</p><p>Advokátní kancelář Petráš Rezek s.r.o.</p></div>
+          <a class="navigate-btn" href="https://www.google.com/maps/dir/?api=1&destination=2.+kv%C4%9Btna+7134%2C+760+01+Zl%C3%ADn" target="_blank">🧭 Navigovat</a>
+        </div>
+      </div>
+
+      <button class="cta-btn" onclick="alert('V reálné platformě by se zde otevřel poptávkový formulář s popisem kauzy.')">Poptat advokáta ohledně mé kauzy</button>
+
+      <p class="section-label" style="margin-top:22px;">Podobné profily ve srovnávači</p>
+      <div class="related-row">
+        <a href="Profil_Vilem_Podesva.html">JUDr. Vilém Podešva (ROWAN LEGAL)</a>
+        <a href="Profil_Katarina_Sulova.html">Mgr. Katarína Šulová</a>
+        <a href="Homepage_Srovnavac_advokatu.html">Zpět na vyhledávání</a>
+      </div>
+
+      <div class="footer-note" style="margin-top:20px;">
+        Zdroje: petrasrezek.cz (veřejná homepage, sekce Náš tým a Kontakty). Profil je automaticky sestavený stub, který pan Rezek nenárokoval — slouží jako ukázka toho, jak srovnávač vypadá u velké kanceláře, jejíž web nerozlišuje specializace ani kariéru jednotlivých advokátů. Stav k 22. 7. 2026, mimo uvedené zdroje neověřováno.
+      </div>
+    </div>
+  </div>
+  </div>
+
+<script>
+function toggleSection(name) {
+  const content = document.getElementById(name + '-content');
+  const toggle = document.getElementById(name + '-toggle');
+  const isOff = toggle.classList.contains('off');
+  if (isOff) {
+    toggle.classList.remove('off');
+    content.style.display = 'block';
+    if (name === 'price') {
+      document.getElementById('price-off-note').style.display = 'none';
+      document.getElementById('price-editor-fields').style.display = 'flex';
+    }
+  } else {
+    toggle.classList.add('off');
+    content.style.display = 'none';
+    if (name === 'price') {
+      document.getElementById('price-off-note').style.display = 'block';
+    }
+  }
+}
+</script>
+</body>
+</html>

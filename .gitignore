@@ -1,0 +1,15 @@
+# build/dev artefakty z přípravy prototypu — do repozitáře pro investory nepatří
+node_modules/
+package.json
+package-lock.json
+build_report.js
+shot.js
+*.tmp
+.~lock.*#
+
+# QA/render screenshoty vzniklé při kontrole (ne finální obsah)
+qa_*.jpg
+verify_*.jpg
+page-*.jpg
+rowan_thumbs-*.jpg
+akpr_thumbs-*.jpg
