@@ -20,8 +20,6 @@ const SITE_DATA = {
       size: "malá (2 advokáti + koncipientka)",
       founded: 2019,
       tags: ["Rodinné právo", "Trestní právo", "Občanské právo", "Obchodní právo", "Stavební a správní právo"],
-      sectors: [],
-      keywords: ["rodinné právo", "rozvod", "péče o dítě", "trestní právo", "hospodářské trestné činy", "stavební právo", "správní právo", "občanské právo", "brno"],
       sourceNote: "vyhledavac.cak.cz, janiskova-lata.cz"
     },
     {
@@ -33,8 +31,6 @@ const SITE_DATA = {
       size: "velká (14 advokátů/partnerů uvedených na webu, desítky členů týmu)",
       founded: 1991,
       tags: ["Fúze, akvizice a korporátní právo", "IT a telekomunikace", "Hospodářská soutěž", "Energetika a životní prostředí", "Veřejné zakázky (ZZVZ)", "Duševní vlastnictví", "Arbitráže"],
-      sectors: ["Bankovnictví a další finanční služby", "Doprava a logistika", "Energetika, vodní a odpadové hospodářství", "IT a telekomunikace", "Média a související služby", "Nemovitosti a stavebnictví", "Sport", "Veřejný sektor"],
-      keywords: ["fúze", "akvizice", "korporátní právo", "it právo", "telekomunikace", "hospodářská soutěž", "antitrust", "energetika", "životní prostředí", "veřejné zakázky", "duševní vlastnictví", "arbitráž", "praha", "brno", "compliance", "gdpr", "ochrana osobních údajů", "nemovitosti", "stavební projekty", "banka", "finance", "sport", "startup"],
       sourceNote: "rowan.legal (veřejné stránky O nás, Tým, Ocenění, Reference, Kontakty), stav k 22. 7. 2026"
     },
     {
@@ -46,8 +42,6 @@ const SITE_DATA = {
       size: "velká (50+ advokátů a kolegů dle vlastního webu)",
       founded: null,
       tags: ["Obchodní právo", "Transakce a M&A", "Daně a účetnictví", "Veřejné zakázky", "Generační výměna ve firmách"],
-      sectors: [],
-      keywords: ["obchodní právo", "transakce", "akvizice firem", "prodej firmy", "generační výměna", "rodinná firma", "daně", "daňové poradenství", "účetnictví", "veřejné zakázky", "dotace", "svěřenský fond", "vstup investora", "zlín", "praha"],
       sourceNote: "petrasrezek.cz (veřejná homepage: O nás, Tým, Naše práce, Reference, Aktuality, Kontakty), stav k 22. 7. 2026"
     },
     {
@@ -59,8 +53,6 @@ const SITE_DATA = {
       size: "velká (14 advokátů)",
       founded: null,
       tags: ["Obchodní právo", "Nemovitosti", "Retainer i hodinová sazba", "Pobočky: Praha, Brno, Ostrava", "Skupina i s daněmi a účetnictvím"],
-      sectors: [],
-      keywords: ["obchodní právo", "nemovitosti", "nájemní spor", "praha", "brno", "ostrava", "veřejné zakázky", "rozhodčí řízení"],
       sourceNote: "FIKTIVNÍ ukázkový profil — demonstruje, jak budou vypadat pole u velké kanceláře (žebříčky, veřejné zakázky, síť). Není reálná kancelář."
     }
   ],
@@ -78,9 +70,25 @@ const SITE_DATA = {
       avatarColor: "#14a37f",
       role: "Advokátka · spoluzakladatelka a řídící partnerka",
       tags: ["Rodinné právo", "Trestní právo", "Občanské právo", "Angličtina", "Malá kancelář (2+1)"],
-      keywords: ["rodinné právo", "rozvod", "péče o dítě", "nezletilé", "trestní právo", "hospodářské trestné činy", "stavební právo", "správní právo", "občanské právo", "brno", "b2c"],
+      keywords: ["rodinné právo", "rozvod", "péče o dítě", "nezletilé", "trestní právo", "hospodářské trestné činy", "stavební právo", "správní právo", "občanské právo", "brno", "anglicky", "angličtina", "b2c"],
       verified: true,
       sourceNote: "vyhledavac.cak.cz (evid. č. 13656), janiskova-lata.cz, LinkedIn, Google Maps"
+    },
+    {
+      id: "lata",
+      real: true,
+      name: "Mgr. Štěpán Lata",
+      page: "Profil_Kancelar_Janiskova_Lata.html",
+      firmId: "janiskova-lata",
+      firmName: "Janisková & Lata, advokátní kancelář",
+      city: "Brno",
+      avatarInitials: "ŠL",
+      avatarColor: "#6b7280",
+      role: "Advokát · trvale spolupracující",
+      tags: ["Obchodní právo", "Občanské právo"],
+      keywords: ["obchodní právo", "občanské právo", "brno", "b2c", "b2b"],
+      verified: false,
+      sourceNote: "janiskova-lata.cz — Tým. Profil je automaticky vytvořený stub (nenárokováno), specializace odpovídá tagům z veřejné týmové stránky kanceláře."
     },
     {
       id: "podesva",
@@ -95,8 +103,40 @@ const SITE_DATA = {
       role: "Advokát · Partner",
       tags: ["Hospodářská soutěž", "Energetika a životní prostředí", "Právo nemovitostí", "Veřejné zakázky (ZZVZ)", "Legal 500 · Chambers Europe"],
       keywords: ["hospodářská soutěž", "antitrust", "energetika", "životní prostředí", "veřejné zakázky", "zzvz", "nemovitosti", "stavební projekty", "praha", "regulace", "compliance", "b2b", "b2g"],
-      verified: true,
-      sourceNote: "rowan.legal — Tým, Ocenění (Legal 500 EMEA 2026, Chambers Europe 2026), Kontakty"
+      verified: false,
+      sourceNote: "rowan.legal — Tým, Ocenění (Legal 500 EMEA 2026, Chambers Europe 2026), Kontakty. Profil je automaticky sestavený stub (nenárokováno) — osobní ověření u ČAK v tomto kole neprovedeno, proto verified: false, i když je zdroj veřejný a spolehlivý."
+    },
+    {
+      id: "donat",
+      real: true,
+      name: "JUDr. Josef Donát, LL.M.",
+      page: "Profil_Rowan_Legal.html",
+      firmId: "rowan-legal",
+      firmName: "ROWAN LEGAL, advokátní kancelář s.r.o.",
+      city: "Praha",
+      avatarInitials: "JD",
+      avatarColor: "#6b7280",
+      role: "Advokát · Partner",
+      tags: ["Bankovní a finanční právo", "Duševní vlastnictví", "IT a telekomunikace"],
+      keywords: ["bankovní právo", "finanční právo", "duševní vlastnictví", "it právo", "it a telekomunikace", "telekomunikace", "praha", "b2b"],
+      verified: false,
+      sourceNote: "rowan.legal — Tým (veřejná stránka). Profil je automaticky vytvořený stub (nenárokováno), specializace odpovídá tagům z veřejné týmové stránky kanceláře."
+    },
+    {
+      id: "nulicek",
+      real: true,
+      name: "Mgr. Michal Nulíček, LL.M., FCIArb",
+      page: "Profil_Rowan_Legal.html",
+      firmId: "rowan-legal",
+      firmName: "ROWAN LEGAL, advokátní kancelář s.r.o.",
+      city: "Praha",
+      avatarInitials: "MN",
+      avatarColor: "#6b7280",
+      role: "Advokát · Partner",
+      tags: ["IT a telekomunikace", "Ochrana osobních údajů", "Regulace a compliance"],
+      keywords: ["it právo", "it a telekomunikace", "telekomunikace", "ochrana osobních údajů", "gdpr", "regulace", "compliance", "praha", "b2b", "b2g"],
+      verified: false,
+      sourceNote: "rowan.legal — Tým (veřejná stránka). Profil je automaticky vytvořený stub (nenárokováno), specializace odpovídá tagům z veřejné týmové stránky kanceláře."
     },
     {
       id: "rezek",
@@ -111,8 +151,8 @@ const SITE_DATA = {
       role: "Advokát · Partner",
       tags: ["Obchodní právo", "Transakce", "Generační výměna ve firmách", "Veřejné zakázky"],
       keywords: ["obchodní právo", "transakce", "generační výměna", "rodinná firma", "veřejné zakázky", "dotace", "zlín", "praha", "b2b"],
-      verified: true,
-      sourceNote: "petrasrezek.cz — Náš tým, kontaktní údaje kanceláře"
+      verified: false,
+      sourceNote: "petrasrezek.cz — Náš tým, kontaktní údaje kanceláře. Profil je automaticky sestavený stub (nenárokováno) — osobní ověření u ČAK v tomto kole neprovedeno, proto verified: false, i když je zdroj veřejný a spolehlivý."
     },
     {
       id: "novak-partner",
